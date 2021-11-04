@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Scrollytelling Demo</title>
+   	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500" rel="stylesheet">
+   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+    <style>
+
+		p {
+			font-family: 'Open Sans', sans-serif;
+			color:#353536;
+			font-weight:300;
+		}
+
+		svg {
+			width:100%;
+			height:600px;
+			padding-left:5%;
+			padding-right:50px;		
+		}
+		
+		h1 {
+			font-size:60px;
+			font-weight:200;
+			line-height:1.3;
+		}
+		
+		#firstvisualdiv{
+          position: -webkit-sticky;
+          position: sticky;
+          top: -1px;
+          border-color: black;
+          background-color: gray;
+          padding: 100px;
+          transition: opacity 0.8s;
+         -webkit-transition: opacity 0.8s;
+
+    	}
+
+    #secondvisualdiv {
+          position: -webkit-sticky;
+          position: sticky;
+          top: -1px;
+          padding: 100px;
+          transition: opacity 0.8s;
+         -webkit-transition: opacity 0.8s;
+        }
+
+
+   .img{
+    max-width: 100%;
+    max-height: 100%;
+    position: relative;
+    opacity: 0;
+    transition: opacity 1.2s;
+    -webkit-transition: opacity 1.2s;
+
+   }
+
+   .text1opacity, .text2opacity {
+        font-size:30px;
+        fill:blue;
+        opacity:0;
+        transition: opacity 0.8s;
+         -webkit-transition: opacity 0.8s;
+        }
+
+    .text3opacity {
+        font-size:30px;
+        fill:blue;
+        opacity:0;
+        transition: opacity 0.8s;
+        color: blue;
+         -webkit-transition: opacity 0.8s;
+        } 
+
+	.active {
+        	opacity:1;
+    	}
+
+
+    .deactive {
+            opacity:0;
+        }
+
+	</style>
+
+
+</head>
+<body>
+  <main role="main" class="container" >
+     <div class="row">
+     	<div class="col-6">
+     		<br><br>
+     		<h1>Scrollytelling Demo (without D3)</h1>
+     		<hr>
+     	</div>
+     </div>
+     <div class="row">
+     	<div class="col-4">
+      
+      <p>The basic idea of scrollytelling is that you can set up various "scene" as you scroll the webpage through different elements. This is enabled by the "ScrollMagic.Scene" function from the ScrollMagic JavaScript Library.  These scenes can be various animations specified in CSS, such as opacity, color, font-size and others. When creating a scene, you need to associate a particular content element (e.g., a paragraph) as a trigger to activate this scene by using the element id as a "triggerElement". So as you scrolling through different HTML elements on the webpage, you activate different scenes in sequence. In this .html file, you will see this paragraph does not have an id as a trigger, so nothing happens at this moment. When you start to scroll down to the next paragraph (with an id "text1"), you will trigger a MagicScroll scene that manipulates "TEXT_1_OPACITY" (a paragraph) with the "text1opacity" CSS class.</p>
+
+      <br><br>
+
+     	<p id="text1"> This is the paragraph with a "text1" id. In the script "ScrollMagic.Scene()", we have created a scene ("ScrollMagic.Scene") using this paragraph as a "trigger". Specifically, we use the paragraph id ("text1") as a "triggerElement" to activate the CSS change. Therefore, when scrolling here, you have activated the "text1" to trigger some animation. In this example, we changed the text opacity for "TEXT_1_OPACITY" from 0 to 1, so it looks like the text appears when scrolling. </p>
+
+     	<br><br>
+
+     	<p id="text2">Now you have scrolled at this paragraph with "text2" id. Accordingly, you will activate a new ScrollMagic.Scene that uses "#text2" as a trigger. Look out that when creating a ScrollMagic.Scene in your script, you need to add a "#" sign before the id name. In the script, we use ".setClassToggle()" to define a CSS class modification while the scene is active. When the scene triggers the classes will be added to the supplied element and removed when the scene is over. For example, when this scene is triggered, .setClassToggle() adds the CSS class 'active' (with opacity as 1) to the class "text3opacity" (with an original opacity 0). So the text appears.</p>
+     	<br><br>
+
+     	<p id="text3">So now you have scrolled at this paragraph with "text3" id. Looking at the CSS code, you will see that we define ".text3opacity" with a different color than the prevous two.  Keep in mind, ".text3opacity" is a CSS class while "#text3" is a CSS id. </p>
+     	<br><br>
+     	</div>
+
+     	<div class="col-8">
+     		<div id="firstvisualdiv">
+               <p style="font-size: 20px;"> ID="firstvisualdiv" </p>
+               <p class="text1opacity"> TEXT_1_OPACITY </p>
+               <p class="text2opacity"> TEXT_2_OPACITY </p>
+               <p class="text3opacity"> TEXT_3_OPACITY </p>
+     		</div>
+     	</div>
+
+     	<div class="col-4">
+     	<p id="text4">This is the paragraph with id "text4". We can also update a division (for example, for the div with id="firstvisualdiv") by changing its opacity from 1 to 0 (defined by a CSS class "deactive"). In this way, the div disappears. </p>
+        
+        <br><br>
+        <p> This paragraph does not trigger any MagicScroll scene. Sometime, you may do not want to set all triggers too close to each other. This would provide some time for the users to read and see the viz. You also need to properly arrange the length between each trigger to make sure there are sufficient space for the user to scroll.</p>
+
+     	<br><br>
+        <p id="text5">This is the paragraph with id "text5". Now you can see we create a scene by changing this image's opacity. The process is similar that you can create a CSS class "img" for the image and then change its opacity when triggering "text5" paragraph.</p>
+        
+        <br><br>
+        <p> Finally, you need to provide enough space for the user to scroll "text5" paragraph to pass the middle of your browser window (imagine there is a horizontal line defines the mid-point of your browser window). If you have an element at the very bottom of the page, you may never be able to "trigger" it to activate the scene. For example, we add a line break ("br") after this paragraph to provide enough space that ensures us to scroll "text5" to pass the lower half of the browser window. You can test this by delete this paragaph, then you won't be able to trigger the last scene.</p>
+        
+        <br><br>
+     	</div>
+     	<div class="col-8">
+     		<div id="secondvisualdiv">
+                <img class="img" src="https://cdn.theculturetrip.com/wp-content/uploads/2016/09/mit_building_10_and_the_great_dome_cambridge_ma.jpg">
+     		</div>
+     	</div>
+     </div>
+  </main><!-- /.container -->
+</body>
+
+<script type="text/javascript">    
+    var controller = new ScrollMagic.Controller();
+    
+    	new ScrollMagic.Scene({triggerElement: "#text1"})
+        	.setClassToggle(".text1opacity", "active") 
+        	.addTo(controller);
+        
+    	new ScrollMagic.Scene({triggerElement: "#text2"})
+        	.setClassToggle(".text2opacity", "active") 
+        	.addTo(controller);
+                        
+		new ScrollMagic.Scene({triggerElement: "#text3"})
+        	.setClassToggle(".text3opacity", "active") 
+        	.addTo(controller);
+
+        new ScrollMagic.Scene({triggerElement: "#text4"})
+            .setClassToggle("#firstvisualdiv", "deactive") 
+            .addTo(controller);
+
+        new ScrollMagic.Scene({triggerElement: "#text5"})
+            .setClassToggle(".img", "active") 
+            .addTo(controller);
+								
+</script>
+</body>
+</html>

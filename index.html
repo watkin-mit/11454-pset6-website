@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Mapping Migration's Mutual Benefits</title>
+   	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500" rel="stylesheet">
+   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+    <style>
+
+		p {
+			font-family: 'Open Sans', sans-serif;
+			color:#353536;
+			font-weight:300;
+		}
+
+		svg {
+			width:100%;
+			height:600px;
+			padding-left:5%;
+			padding-right:50px;
+		}
+
+		h1 {
+			font-size:60px;
+			font-weight:200;
+			line-height:1.3;
+		}
+
+    h2 {
+      font-size:36px;
+      font-weight:100;
+    }
+
+		#firstvisualdiv{
+          position: -webkit-sticky;
+          position: sticky;
+          top: -1px;
+          border-color: black;
+          background-color: gray;
+          padding: 100px;
+          transition: opacity 0.8s;
+         -webkit-transition: opacity 0.8s;
+
+    	}
+
+      #firstvisualdiv2 {
+            position: -webkit-sticky;
+            position: sticky;
+            top: -1px;
+            padding: 100px;
+            transition: opacity 0.8s;
+           -webkit-transition: opacity 0.8s;
+          }
+
+
+    #secondvisualdiv {
+          position: -webkit-sticky;
+          position: sticky;
+          top: -1px;
+          padding: 100px;
+          transition: opacity 0.8s;
+         -webkit-transition: opacity 0.8s;
+        }
+
+        #secondvisualdiv2 {
+              position: -webkit-sticky;
+              position: sticky;
+              top: -1px;
+              padding: 100px;
+              transition: opacity 0.8s;
+             -webkit-transition: opacity 0.8s;
+            }
+
+   .img{
+    max-width: 100%;
+    max-height: 100%;
+    position: relative;
+    opacity: 0;
+    transition: opacity 1.2s;
+    -webkit-transition: opacity 1.2s;
+
+   }
+
+   .text1opacity {
+        font-size:30px;
+        fill:blue;
+        opacity:0;
+        transition: opacity 0.8s;
+         -webkit-transition: opacity 0.8s;
+        }
+
+	.active {
+        	opacity:1;
+    	}
+
+
+    .deactive {
+            opacity:0;
+        }
+
+	</style>
+
+
+</head>
+<body>
+  <main role="main" class="container" >
+     <div class="row">
+     	<div class="col-12">
+     		<br><br>
+     		<h1>Mapping Migration's Mutual Benefits</h1>
+     	</div>
+      <div class="col-12">
+        <br><br>
+        <h2>Ilham Ali and Will Atkinson</h2>
+        <hr>
+      </div>
+     </div>
+     <div class="row">
+     	<div class="col-4">
+
+      <p>Welcome to our first scrollytelling site!
+        While there is much to be done, we can work from this template to add more customized content and styling.
+
+      <br><br>
+
+     	<p id="text1"> As discussed with Ashley, our outline will be as follows:
+     	<br><br>
+
+     	<p id="text2">Now you have scrolled at this paragraph with "text2" id. Accordingly, you will activate a new ScrollMagic.Scene that uses "#text2" as a trigger. Look out that when creating a ScrollMagic.Scene in your script, you need to add a "#" sign before the id name. In the script, we use ".setClassToggle()" to define a CSS class modification while the scene is active. When the scene triggers the classes will be added to the supplied element and removed when the scene is over. For example, when this scene is triggered, .setClassToggle() adds the CSS class 'active' (with opacity as 1) to the class "text3opacity" (with an original opacity 0). So the text appears.</p>
+     	<br><br>
+
+     	<p id="text3">So now you have scrolled at this paragraph with "text3" id. Looking at the CSS code, you will see that we define ".text3opacity" with a different color than the prevous two.  Keep in mind, ".text3opacity" is a CSS class while "#text3" is a CSS id. </p>
+     	<br><br>
+     	</div>
+
+     	<div class="col-8">
+     		<div id="firstvisualdiv">
+               <p style="font-size: 20px;"> ID="firstvisualdiv" </p>
+               <p class="text1opacity"> People migrate </p>
+     		</div>
+        <div id="firstvisualdiv2">
+               <p style="font-size: 20px;"> ID="firstvisualdiv2" </p>
+               <p class="text1opacity"> They find work </p>
+        </div>
+     	</div>
+
+     	<div class="col-4">
+     	<p id="text4">This is the paragraph with id "text4". We can also update a division (for example, for the div with id="firstvisualdiv") by changing its opacity from 1 to 0 (defined by a CSS class "deactive"). In this way, the div disappears. </p>
+
+        <br><br>
+        <p> This paragraph does not trigger any MagicScroll scene. Sometime, you may do not want to set all triggers too close to each other. This would provide some time for the users to read and see the viz. You also need to properly arrange the length between each trigger to make sure there are sufficient space for the user to scroll.</p>
+
+     	<br><br>
+        <p id="text5">This is the paragraph with id "text5". Now you can see we create a scene by changing this image's opacity. The process is similar that you can create a CSS class "img" for the image and then change its opacity when triggering "text5" paragraph.</p>
+
+        <br><br>
+        <p> Finally, you need to provide enough space for the user to scroll "text5" paragraph to pass the middle of your browser window (imagine there is a horizontal line defines the mid-point of your browser window). If you have an element at the very bottom of the page, you may never be able to "trigger" it to activate the scene. For example, we add a line break ("br") after this paragraph to provide enough space that ensures us to scroll "text5" to pass the lower half of the browser window. You can test this by delete this paragaph, then you won't be able to trigger the last scene.</p>
+
+        <br><br>
+     	</div>
+     	<div class="col-8">
+     		<div id="secondvisualdiv">
+                <img class="img" src="assets/img/map1104.png">
+                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plotly.com/~watkin/1.embed" height="525" width="100%"></iframe>
+     		</div>
+     	</div>
+     </div>
+  </main><!-- /.container -->
+</body>
+
+<script type="text/javascript">
+    var controller = new ScrollMagic.Controller();
+
+    	new ScrollMagic.Scene({triggerElement: "#text1"})
+        	.setClassToggle(".text1opacity", "active")
+        	.addTo(controller);
+
+    	new ScrollMagic.Scene({triggerElement: "#text2"})
+        	.setClassToggle(".text2opacity", "active")
+        	.addTo(controller);
+
+		new ScrollMagic.Scene({triggerElement: "#text3"})
+        	.setClassToggle(".text3opacity", "active")
+        	.addTo(controller);
+
+        new ScrollMagic.Scene({triggerElement: "#text4"})
+            .setClassToggle("#firstvisualdiv", "deactive")
+            .addTo(controller);
+
+        new ScrollMagic.Scene({triggerElement: "#text5"})
+            .setClassToggle(".img", "active")
+            .addTo(controller);
+
+</script>
+</body>
+</html>
