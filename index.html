@@ -36,8 +36,6 @@
           position: -webkit-sticky;
           position: sticky;
           top: -1px;
-          border-color: black;
-          background-color: gray;
           padding: 100px;
           transition: opacity 0.8s;
          -webkit-transition: opacity 0.8s;
@@ -45,12 +43,12 @@
     	}
 
       #firstvisualdiv2 {
-            position: -webkit-sticky;
-            position: sticky;
-            top: -1px;
-            padding: 100px;
-            transition: opacity 0.8s;
-           -webkit-transition: opacity 0.8s;
+          position: -webkit-sticky;
+          position: sticky;
+          top: -1px;
+          padding: 100px;
+          transition: opacity 0.8s;
+         -webkit-transition: opacity 0.8s;
           }
 
 
@@ -136,13 +134,11 @@
 
      	<div class="col-8">
      		<div id="firstvisualdiv">
-               <p style="font-size: 20px;"> ID="firstvisualdiv" </p>
                <p class="text1opacity"> People migrate </p>
+               <p class="text1opacity"> They support local economies </p>
+               <p class="text1opacity"> They support faraway families </p>
+
      		</div>
-        <div id="firstvisualdiv2">
-               <p style="font-size: 20px;"> ID="firstvisualdiv2" </p>
-               <p class="text1opacity"> They find work </p>
-        </div>
      	</div>
 
      	<div class="col-4">
@@ -160,8 +156,15 @@
         <br><br>
      	</div>
      	<div class="col-8">
-     		<div id="secondvisualdiv">
+        <div id="secondvisualdiv">
                 <img class="img" src="assets/img/map1104.png">
+     		</div>
+
+        <div id="firstvisualdiv2">
+               <p class="text1opacity"> They find work </p>
+        </div>
+
+     		<div id="secondvisualdiv2">
                 <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plotly.com/~watkin/1.embed" height="525" width="100%"></iframe>
      		</div>
      	</div>
@@ -176,20 +179,21 @@
         	.setClassToggle(".text1opacity", "active")
         	.addTo(controller);
 
-    	new ScrollMagic.Scene({triggerElement: "#text2"})
-        	.setClassToggle(".text2opacity", "active")
+          new ScrollMagic.Scene({triggerElement: "#text2"})
+              .setClassToggle("#firstvisualdiv", "deactive")
+              .addTo(controller);
+
+    	new ScrollMagic.Scene({triggerElement: "#text3"})
+        	.setClassToggle(".img", "active") //CHANGE 2 n
         	.addTo(controller);
 
-		new ScrollMagic.Scene({triggerElement: "#text3"})
-        	.setClassToggle(".text3opacity", "active")
+		new ScrollMagic.Scene({triggerElement: "#text4"})
+        	.setClassToggle(".img", "deactive")
         	.addTo(controller);
 
-        new ScrollMagic.Scene({triggerElement: "#text4"})
-            .setClassToggle("#firstvisualdiv", "deactive")
-            .addTo(controller);
 
         new ScrollMagic.Scene({triggerElement: "#text5"})
-            .setClassToggle(".img", "active")
+            .setClassToggle("#firstvisualdiv", "deactive")
             .addTo(controller);
 
 </script>
